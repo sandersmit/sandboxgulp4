@@ -1,0 +1,387 @@
+@import "node_modules/bootstrap/scss/functions.scss";
+@import "node_modules/bootstrap/scss/variables.scss";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+@import "node_modules/bootstrap/scss/mixins/grid-framework.scss";
+@import "node_modules/bootstrap/scss/mixins/grid.scss";
+// @import "node_modules/bootstrap/scss/utilities/display.scss";
+// @import "node_modules/bootstrap/scss/utilities/flex.scss";
+// @import "node_modules/bootstrap/scss/grid.scss";
+// No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
+
+.gridContainer2 {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1280px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    //border: solid;
+    margin:auto;
+
+    h2{
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 35px;
+        font-weight: 200;
+    }
+
+    .blockholder {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; //align-self: center;
+        width: 100%;
+        //border:solid 1px;
+        // margin-left: -100px;
+        // margin-right: -100px;
+        a {
+
+            display: flex;
+            flex-wrap: wrap;
+            @include make-col(8);
+
+            padding:0px;
+            //padding: 0px 45px; //align-self: center;
+            min-height: 200px;
+            @include media-breakpoint-up(md) {
+                @include make-col(4);
+                //min-height: 300px;
+            }
+            @include media-breakpoint-up(lg) {
+                //min-height: 380px;
+            }
+            justify-content: center;   
+
+            .item {
+               // border:solid 1px;
+                display: block;
+                width: 100%;
+                 background-color: #25a1a9;
+                margin: 5px;
+                 display: flex;
+                 flex-wrap: wrap;
+                 justify-content: center;
+                 align-items: center;
+                .itemheader {
+                   // align-self: center;
+                   opacity: 0;
+                   display: none;
+                    h3 {
+                        color: green;
+                    }
+                }
+                .itemimg {
+                    //align-self: center;
+                    //padding: 20px;
+                    //height: 150px;
+                    padding: 50px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain; //opacity: 0;
+                        @include media-breakpoint-up(md) {
+                            padding:0px;
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                .item{
+                    background-color: #3c4354;
+                
+                .itemheader {
+                opacity: 1;
+                display: block;
+                    h3 {
+                        color: green;
+                        
+                    }
+                }
+            }
+            }
+        }
+    }
+}
+
+
+
+.container {
+
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1024px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); //grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: 160px;
+
+    border: solid 2px green;
+
+
+    @include media-breakpoint-up(md) {
+        border: solid 2px yellow;
+        grid-template-columns: repeat(8, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        grid-auto-rows: 160px;
+    }
+
+
+    max-width: 1280px;
+    margin: auto;
+    column-gap: 5px;
+    article {
+        //margin:auto;
+        &.block {
+            //border:solid 3px black;
+            display: grid; //max-width: 400px;
+            //1
+            //grid-template-columns: 200px 200px 200px;
+            //2
+            //grid-template-columns: 1fr 1fr;
+            //3
+            //grid-template-columns: repeat(2, 1fr);
+            //rows
+            //grid-auto-rows: minmax(100px, auto);
+            column-gap: 5px;
+            row-gap: 5px;
+            margin-bottom: 5px; // width: 320px;
+            // height: 320px;
+        }
+
+        &.primary {
+            //border: solid 2px green;
+            grid-column-start: 1;
+            grid-column-end: 7;
+            grid-row-start: 2;
+            grid-row-end: 4;
+            justify-self: center;
+            grid-auto-rows: minmax(160px, auto);
+            @include media-breakpoint-up(md) {
+
+                grid-column-start: 1;
+                grid-column-end: 4;
+                grid-row-start: 2;
+                grid-row-end: 4;
+                grid-auto-rows: minmax(100px, auto);
+                justify-self: end;
+            }
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        &.secondary {
+            //  max-width: 160px;
+            // max-height: 160px;
+            // border: solid 2px purple;
+            grid-column-start: 1;
+            grid-column-end: 7;
+            grid-row-start: 4;
+            grid-row-end: 8;
+            justify-self: center;
+            grid-auto-rows: minmax(160px, auto);
+            @include media-breakpoint-up(md) {
+                grid-column-start: 4;
+                grid-column-end: 7; //grid-auto-rows: minmax(160px, auto);
+            }
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        &.tertiary {
+            //grid-row-end:4;
+            // display: grid;
+            // grid-template-columns: repeat(2, 1fr); //grid-auto-rows: minmax(100px, auto); 
+            grid-column-start: 1;
+            grid-column-end: 7;
+            grid-row-start: 8;
+            grid-row-end: 12;
+            @include media-breakpoint-up(md) {
+                grid-column-start: 7;
+                grid-column-end: 8;
+                grid-row-start: 2;
+                grid-row-end: 4;
+            }
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); //grid-auto-rows: minmax(100px, auto);
+        }
+        &.quaternary {
+            grid-column-start: 1;
+            grid-column-end: 7;
+            grid-row-start: 12;
+            grid-row-end: 16;
+            grid-template-columns: repeat(2, 1fr);
+            @include media-breakpoint-up(md) {
+                grid-column-start: 4;
+                grid-column-end: 7;
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            display: grid; //grid-auto-rows: minmax(100px, auto);
+        }
+
+        .item {
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain; //opacity: 0;
+            }
+            background-color: #fb5a2c;
+            transform: scale(0, 0);
+            transition: transform;
+            transition-duration: 0.2s;
+            transition-timing-function: ease-in;
+            transition-delay: 0s;
+
+            &.show {
+                //opacity: 1;
+                transform: scale(1, 1);
+            }
+            &:hover {
+                transform: scale(1.3, 1.3);
+                box-shadow: 10px 10px 44px grey;
+            } //background-color: darkgrey;
+        }
+    }
+}
+
+.box2 {
+
+    @include make-col(6);
+    padding: 15px; //background: black;
+    //border: solid 1px orange; //flex: 1;
+    //min-height: 300px; //width: 500px; 
+    max-height: 300px; //height: 50%;
+    height: auto;
+
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    article {
+        //flex-grow:1;
+        max-height: 300px; //height: 50%;
+        height: auto;
+        background: #303644; //border:solid 1px green;
+        display: flex;
+        flex-wrap: wrap;
+        &.first {
+            cursor: pointer;
+            background-color: green;
+            display: flex;
+            justify-content: center;
+            border: solid 3px orange;
+            img {
+                width: 100%;
+                height: auto;
+                padding: 10px;
+            }
+            div {
+                border: solid 2px white;
+                @include make-col(3); //width: 120px;
+                position: relative;
+                align-self: center;
+                left: calc(0%);
+
+
+                img {
+                    width: 100%;
+                    padding: 10px;
+                }
+            }
+            div+div {
+                position: relative;
+                @include make-col(9);
+                border: solid 1px white;
+                quote {
+                    opacity: 0;
+                }
+                .open & {
+                    //  display: block;
+                } //width: 50%;
+            }
+        }
+
+        &.second {
+            //top: calc(150px + 30px); //width:calc(50%;)
+            //@include make-col(6);
+            color: black;
+            position: relative;
+            background: #fff;
+            z-index: 1;
+            height: 0px; //border:solid 1px;
+            .magicbox {
+                &:before {
+                    position: absolute;
+                    display: block;
+                    width: 30px;
+                    height: 30px;
+                    content: "";
+                    margin-left: calc(50% - 20px); //background: #303644;
+                    width: 0;
+                    height: 0;
+                    border-left: 20px solid transparent;
+                    border-right: 20px solid transparent;
+                    border-top: 20px solid #303644;
+                }
+                display: none;
+                background-color: #fff;
+                height: 150px;
+                position: absolute;
+                border: solid 2px green;
+                justify-content: center;
+                div {
+                    border: solid 1px pink; // @include make-col(3);
+                    align-self: center;
+                    img {
+                        width: 100px;
+                        padding: 10px;
+                    }
+                }
+                div+div {
+
+                    display: flex;
+                    flex-wrap: wrap;
+                    img {
+                        //width: 60px;
+                        @include make-col(2);
+                        align-self: center;
+                    }
+                    a {
+                        @include make-col(9);
+                        align-self: center;
+                    }
+
+                    border: solid 1px yellow;
+                }
+            }
+        }
+    }
+}
+
+
+@include media-breakpoint-up(sm) {
+    .box1 {
+        //background-color:red;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .box1 {
+        //background-color:green;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .box1 {
+        //background-color:orange;
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .box1 {
+        //background-color:yellow;
+    }
+}

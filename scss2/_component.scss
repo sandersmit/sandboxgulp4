@@ -1,0 +1,102 @@
+@import "node_modules/bootstrap/scss/functions.scss";
+@import "node_modules/bootstrap/scss/variables.scss";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+@import "node_modules/bootstrap/scss/mixins/grid-framework.scss";
+@import "node_modules/bootstrap/scss/mixins/grid.scss";
+// @import "node_modules/bootstrap/scss/utilities/display.scss";
+// @import "node_modules/bootstrap/scss/utilities/flex.scss";
+// @import "node_modules/bootstrap/scss/grid.scss";
+// No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
+
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1024px; 
+    background-color: orange;
+    min-height: 500px;
+}
+
+.box {
+    @include make-col(4);
+    position: relative;
+    max-height: 300px;
+    background-color: #3c4354;
+    article {
+        position: relative;
+        display: block;
+        &.first {
+            padding:0px;
+            margin:0px;
+            border: 1 red solid;
+            background-color: #119799;
+            z-index: 1;
+            display: block;
+            position: absolute;
+            
+            img {
+                padding:0px;
+                margin:0px;
+                border: 0;
+                //border: solid 1px red;
+                width: 100%;
+                height: auto;
+            }
+        }
+        &.second {
+            display: flex;
+            padding:0px;
+            margin:0px;
+            border: 0;
+            //padding: 10px;
+            q{
+                font-size: 25px;
+                color:#fff;
+            }
+            // @include make-col(4);
+            //padding: 10px;
+            z-index: 0;
+        //overflow: hidden;
+            img {
+                // border: solid 1px red;
+                // width: 100%;
+                // height: auto;
+            }
+        }
+    }
+    &:hover {
+        //border: solid 1px black;
+        .first {
+         opacity: 0;
+        }
+        .second {
+           opacity: 1;
+        }
+    }
+}
+
+
+@include media-breakpoint-up(sm) {
+    .box1 {
+        //background-color:red;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .box1 {
+        //background-color:green;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .box1 {
+        //background-color:orange;
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .box1 {
+        //background-color:yellow;
+    }
+}

@@ -1,0 +1,155 @@
+@import "node_modules/bootstrap/scss/functions.scss";
+@import "node_modules/bootstrap/scss/variables.scss";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+@import "node_modules/bootstrap/scss/mixins/grid-framework.scss";
+@import "node_modules/bootstrap/scss/mixins/grid.scss";
+// @import "node_modules/bootstrap/scss/utilities/display.scss";
+// @import "node_modules/bootstrap/scss/utilities/flex.scss";
+// @import "node_modules/bootstrap/scss/grid.scss";
+// No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
+.container {
+    background: blue;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1024px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.box {
+	
+    @include make-col(6);
+    padding: 15px; //background: black;
+    //border: solid 1px orange; //flex: 1;
+    //min-height: 300px; //width: 500px; 
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    article {
+        //flex-grow:1;
+        height: 150px; //height: 50%;
+        background: #303644; //border:solid 1px green;
+        display: flex;
+        flex-wrap: wrap;
+        &.first {
+            position:relative;
+        	cursor: pointer;
+            background-color: green;
+            display: flex;
+            justify-content: center;
+            border:solid 3px black;
+            div {
+                //border: solid 2px white;
+                @include make-col(3);
+                //width: 120px;
+                position: absolute;
+                align-self: center;
+                //margin-left: 0%;
+  				
+
+                img {
+                    width: 100%;
+                    padding: 10px;
+                }
+            }
+            div+div {
+            	position: relative;
+                @include make-col(9);
+                position:absolute;
+                right:0%;
+                //border: solid 1px white;
+                quote{
+                	opacity: 0;
+                }
+                .open &{
+                //	display: block;
+                opacity:1;
+                }
+                //width: 50%;
+            }
+        }
+
+        &.second {
+            //top: calc(150px + 30px); //width:calc(50%;)
+            //@include make-col(6);
+            color: black;
+            position: relative;
+            background: #fff;
+            z-index: 1;
+            height: 0px; //border:solid 1px;
+            .magicbox {
+                &:before {
+                    position: absolute;
+                    display: block;
+                    width: 30px;
+                    height: 30px;
+                    content: "";
+                    margin-left: calc(50% - 20px); //background: #303644;
+                    width: 0;
+                    height: 0;
+                    border-left: 20px solid transparent;
+                    border-right: 20px solid transparent;
+                    border-top: 20px solid #303644;
+                }
+                display: none;
+                background-color: #fff;
+                height: 150px;
+                position: absolute;
+                border: solid 2px green;
+                justify-content: center;
+                div {
+                    border: solid 1px pink;
+                    // @include make-col(3);
+                    align-self: center;
+                    img {
+                        width: 100px;
+                        padding: 10px;
+                    }
+                }
+                div+div {
+                
+                	display: flex;
+    flex-wrap: wrap;
+                	img{
+                		//width: 60px;
+                		@include make-col(2);
+                align-self: center;
+                	}
+                	a{
+                		@include make-col(9);
+                align-self: center;
+                	}
+                    
+                    border: solid 1px yellow;
+                    
+                }
+            }
+        }
+    }
+}
+
+
+@include media-breakpoint-up(sm) {
+    .box1 {
+        //background-color:red;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .box1 {
+        //background-color:green;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .box1 {
+        //background-color:orange;
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .box1 {
+        //background-color:yellow;
+    }
+}
