@@ -262,14 +262,14 @@ $( ".slider2" ).each(function( index ) {
 
     }
 
-    //RunrandomNumber();
+    RunrandomNumber();
 
 
 
 
     function runThis(myrandomnumber) {
 
-        // console.log("myrandomnumber geeft op start: " + myrandomnumber);
+        console.log("myrandomnumber geeft op start: " + myrandomnumber);
         numberArray2.sort(function() { return 0.5 - Math.random() });
 
         // while (numberArray2.length < 11) {
@@ -317,8 +317,8 @@ $( ".slider2" ).each(function( index ) {
             }, 30 * (index));
 
 
-            // console.log("setImages" + numberArray2);
-            // console.log("index" + index);
+            console.log("setImages" + numberArray2);
+            console.log("index" + index);
 
 
 

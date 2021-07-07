@@ -5,6 +5,24 @@ html {
 
 body {
     margin: 0px auto 0px auto;
+    h1{
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+    .sorteerlijst{
+        a{
+            display: block;
+
+        }
+        img{
+            width: 200px;
+            border: solid 1px;
+        }
+        li{
+            display: inline;
+        }
+    }
 }
 
 section{

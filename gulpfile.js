@@ -1,7 +1,8 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass');
+//var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 var watch = require('gulp-watch');
-var browsersync = require('browser-sync');
+const browsersync = require('browser-sync');
 var prefix = require('gulp-autoprefixer');
 var cp = require('child_process');
 var concat = require('gulp-concat');
@@ -20,15 +21,15 @@ gulp.task('html', function(done) {
 
 });
 
-gulp.task('sass', function(done) {
-    return gulp.src('./scss/**/*.scss')
-        .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError))
-        .pipe(sourcemaps.write())
-        //.pipe(browserSync.reload({ stream: true }))
-        .pipe(gulp.dest('./css'))
-    done();
-});
+// gulp.task('sass', function(done) {
+//     return gulp.src('./scss/**/*.scss')
+//         .pipe(sourcemaps.init())
+//         .pipe(sass().on('error', sass.logError))
+//         .pipe(sourcemaps.write())
+//         //.pipe(browserSync.reload({ stream: true }))
+//         .pipe(gulp.dest('./css'))
+//     done();
+// });
 
 
 //Temporarly for testing!!
@@ -75,7 +76,7 @@ gulp.task('browserSyncReload', function(done) {
 
 gulp.task('watch', function(done) {
     gulp.watch("*.html", gulp.series(['browserSyncReload']))
-    gulp.watch("scss/**/*.scss", gulp.series(['sass', 'browserSyncReload']))
+    //gulp.watch("scss/**/*.scss", gulp.series(['sass', 'browserSyncReload']))
     //for testing
     gulp.watch("scss2/**/*.scss", gulp.series(['sass2', 'browserSyncReload']))
     gulp.watch("js/script_2_2_2.js", gulp.parallel(['scripts', 'browserSyncReload']))

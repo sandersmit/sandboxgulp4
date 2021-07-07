@@ -1,8 +1,12 @@
 $(document).ready(function() {
+    
 
+
+
+    
     if (jQuery) {
         // jQuery is loaded  
-        console.log("ready?");
+       //  jQuery is loaded  _2_2.js
         // let myrandomnumber = Math.floor(Math.random() * 9);
         // console.log("randomnumber"+ myrandomnumber)
         //$('.tertiary .item:nth-child('+myrandomnumber+')').css('background-color', 'red');

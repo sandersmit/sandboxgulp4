@@ -1,0 +1,30 @@
+.sqs-cookie-banner-v2 {
+
+    box-sizing: border-box;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 300000;
+    padding: 10px;
+    position: fixed;
+    
+}
+.sqs-cookie-banner-v2.LIGHT {
+    background-color: #eee;
+}
+.sqs-cookie-banner-v2.BOTTOM_LEFT {
+    bottom: 20px;
+    left: 0px;
+
+}
+.sqs-cookie-banner-v2.POPUP {
+    width: calc(100% - 40px);
+    margin: 20px;
+}
+.sqs-cookie-banner-v2-enabled .sqs-cookie-banner-v2 {
+    display: block;
+}
+
+.blcbxhide{
+    display: none;
+}

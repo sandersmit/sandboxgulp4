@@ -7,7 +7,7 @@ $(document).ready(function() {
 
     if (jQuery) {
         // jQuery is loaded  
-        console.log("ready!1!");
+        console.log("ready!1!?");
     }
 
     $('.box').click(function(event) {
