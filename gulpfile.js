@@ -45,8 +45,8 @@ gulp.task('sass2', function(done) {
 // end
 
 
-gulp.task('scripts', function(done) {
-    return gulp.src('./js/script_2_2_2.js')
+gulp.task('JSscriptHinting', function(done) {
+    return gulp.src(['./js/script_2_2_2.js','./js/blckbx.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
         .pipe(browserSync.reload({ stream: true }));
@@ -79,7 +79,7 @@ gulp.task('watch', function(done) {
     //gulp.watch("scss/**/*.scss", gulp.series(['sass', 'browserSyncReload']))
     //for testing
     gulp.watch("scss2/**/*.scss", gulp.series(['sass2', 'browserSyncReload']))
-    gulp.watch("js/script_2_2_2.js", gulp.parallel(['scripts', 'browserSyncReload']))
+    gulp.watch(['js/script_2_2_2.js','js/blckbx.js'], gulp.parallel(['JSscriptHinting', 'browserSyncReload']))
     done();
 });
 
