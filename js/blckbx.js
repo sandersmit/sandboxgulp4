@@ -2,7 +2,7 @@
 (function () {
     window.addEventListener("load", function () {
         console.log("blckbx loaded");
-        //added some comment
+
         var popup = document.querySelectorAll(".sqs-popup-overlay");
       
         var cookieBtn = document.querySelectorAll(".sqs-cookie-banner-v2-cta");
