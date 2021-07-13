@@ -7,8 +7,12 @@
 // @import "node_modules/bootstrap/scss/utilities/flex.scss";
 // @import "node_modules/bootstrap/scss/grid.scss";
 // No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
-
+.index{
+    border:solid 1px red;
+}
+  
 .gridContainer2 {
+    border:solid 1px red;
     display: flex;
     flex-wrap: wrap;
     max-width: 1280px;

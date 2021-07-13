@@ -58,7 +58,7 @@ gulp.task('browserSync', function(done) {
     browsersync.init({
         server: {
             baseDir: "./",
-            index: "simpleblockComponentnew.html"
+            index: "index.html"
         },
         port: 3000
     });
