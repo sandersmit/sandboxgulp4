@@ -8,6 +8,10 @@ var cp = require('child_process');
 var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 const jshint = require('gulp-jshint');
+const babel = require('gulp-babel'); 
+const uglify = require('gulp-uglify');
+const rename = require("gulp-rename");
+
 
 // gulp.task('default', function(test) {
 //   console.log('Gulp js is running');
@@ -46,12 +50,33 @@ gulp.task('sass2', function(done) {
 
 
 gulp.task('scripts', function(done) {
-    return gulp.src('./js/script_2_2_2.js')
+    return gulp.src(['./js/sandbox.js'])
         .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(browserSync.reload({ stream: true }));
+        .pipe(jshint.reporter('jshint-stylish'));
+        //.pipe(browserSync.reload({ stream: true }));
     done();
 });
+
+
+//use babel for ES6 minifier
+gulp.task('minjs', () => {
+    return gulp.src([
+    'node_modules/@babel/polyfill/dist/polyfill.js',
+    './js/sandbox.js'
+    ])
+      .pipe(babel(
+        //   {presets: ['es2015','es2016']}
+          {
+            "presets": [["@babel/preset-env", { "targets": "defaults" }]]
+          }
+      
+      ))
+    //   .pipe(uglify())
+    .pipe(concat('sandboxDist.js'))
+    //.pipe(rename('sandboxDist.js'))
+      .pipe(gulp.dest('./dist/js'));
+  });
+
 
 // BrowserSync (callback)
 gulp.task('browserSync', function(done) {
@@ -79,7 +104,7 @@ gulp.task('watch', function(done) {
     //gulp.watch("scss/**/*.scss", gulp.series(['sass', 'browserSyncReload']))
     //for testing
     gulp.watch("scss2/**/*.scss", gulp.series(['sass2', 'browserSyncReload']))
-    gulp.watch("js/script_2_2_2.js", gulp.parallel(['scripts', 'browserSyncReload']))
+    gulp.watch("js/**.js", gulp.parallel(['scripts','minjs', 'browserSyncReload']))
     done();
 });
 
