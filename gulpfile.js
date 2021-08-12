@@ -50,7 +50,7 @@ gulp.task('sass2', function(done) {
 
 
 gulp.task('scripts', function(done) {
-    return gulp.src(['./js/sandbox.js'])
+    return gulp.src(['./js/sandbox.js','./js/assesment.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
         //.pipe(browserSync.reload({ stream: true }));
@@ -61,7 +61,7 @@ gulp.task('scripts', function(done) {
 //use babel for ES6 minifier
 gulp.task('minjs', () => {
     return gulp.src([
-    'node_modules/@babel/polyfill/dist/polyfill.js',
+    //'node_modules/@babel/polyfill/dist/polyfill.js',
     './js/sandbox.js'
     ])
       .pipe(babel(

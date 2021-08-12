@@ -2,6 +2,7 @@
     window.addEventListener("load", function () {
         console.log("blckbx loaded");
         var popup = document.querySelectorAll(".sqs-popup-overlay");
+        var cookieBtn = document.querySelectorAll(".sqs-popup-overlay-close");
         var cookieBtn = document.querySelectorAll(".sqs-cookie-banner-v2-cta");
         cookieBtn[0].addEventListener("click", showNewsletterpopup)
         popup[0].parentElement.classList.add("blcbxhide");
@@ -18,7 +19,7 @@
         function showNewsletterpopup() {
             if (popup.length > 0) {
                 console.log("popup visible");
-                popup[0].classList.add("anotherClassname");
+                //popup[0].classList.add("anotherClassname");
                 setTimeout(function () {
                     popup[0].parentElement.classList.remove("blcbxhide");
                     //popup[0].parentElement.remove();
