@@ -1,4 +1,33 @@
 .index{
-    border:solid 1px red;
+    h2{
+        margin: 1rem;
+        padding:0px;
+    }
+
+    .gridContainer2{
+        .blockholder{
+            width: 50%;
+            margin: auto;
+        
+        }
+        ul{
+            padding: 0;
+
+            li{
+                list-style-type: none;
+                margin: 1rem;
+                a{
+                    max-width: inherit;
+                    min-height: auto;
+                    padding: 2rem;
+                    
+                    background-color: black;
+                    color: white;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    
 }
   

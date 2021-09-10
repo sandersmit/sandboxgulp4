@@ -1,0 +1,127 @@
+.gridContainer2 {
+  h2 {
+    padding: 0px;
+  }
+  &.assesment {
+    flex-direction: column;
+    padding: 0px;
+    margin: auto;
+    
+  }
+}
+
+#predefinedNEW {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  @media screen and (min-width: 768px) {
+    max-width: 1280px
+  }
+  padding: 0rem 2rem;
+    li{
+        h4{
+            margin-right: 1rem;
+        }
+       &:first-child{
+        padding: 1rem 2rem;
+        max-width: inherit;
+        @media screen and (min-width: 768px) {
+            max-width: 100%;
+          }
+        background-color: black;
+        color: white;
+       }
+       &:nth-child(2){
+           padding: 0px;
+       }
+       flex-direction: row;
+        align-items: center;
+        width: 100%;
+        @media screen and (min-width: 768px) {
+            max-width: 30%;
+            flex-direction: column;
+            align-items: inherit;
+          }
+          &.plot{
+            max-width: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            @media screen and (min-width: 768px) {
+                max-width: 50%;
+              }
+        } 
+    }
+
+  
+  ul{
+    padding: 0;
+    &.newlist,&.ratings{
+        text-align: left;
+            li{
+                color: grey;
+                &:first-child{
+                    width: 100%;
+                    background-color: #fff;
+                   
+                   }
+               max-width: 100%;
+                padding:10px 0px;
+                flex-direction: column;
+                align-items: flex-start;
+            } 
+        }
+    }
+    .newPar{
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
+        
+    }
+}
+#resultsNEW{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0;
+    li{
+        margin-bottom: 2rem;
+        span{
+            padding: 10px;
+        };
+       
+    }
+}
+
+.newblockholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  input {
+    width: 80%;
+    @media screen and (min-width: 768px) {
+        width: 50%;
+      }
+    padding: 10px;
+    opacity: 0.5;
+  }
+  img {
+    width: 100%;
+  }
+  ul {
+    li {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+
+      a {
+        display: block;
+        padding: 10px;
+      }
+      h1 {
+        text-align: left;
+      }
+    }
+  }
+}
