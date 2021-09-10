@@ -1,27 +1,34 @@
 (function () {
     window.addEventListener("load", function () {
         console.log("blckbx loaded");
-        var popup = document.querySelectorAll(".sqs-popup-overlay");
-        var cookieBtn = document.querySelectorAll(".sqs-popup-overlay-close");
+       
+        var newsLetterPopup = document.querySelectorAll(".sqs-popup-overlay");
+        var cookieCloseBtn = document.querySelectorAll(".sqs-popup-overlay-close");
         var cookieBtn = document.querySelectorAll(".sqs-cookie-banner-v2-cta");
-        cookieBtn[0].addEventListener("click", showNewsletterpopup)
-        popup[0].parentElement.classList.add("blcbxhide");
+        var cookiePopup = document.querySelectorAll(".sqs-cookie-banner-v2");
+        cookieBtn[0].addEventListener("click", showNewsletterpopup);
+        //cookieCloseBtn[0].addEventListener("click", showNewsletterpopup)
+        newsLetterPopup[0].parentElement.classList.add("blcbxhide");
         //popup[0].style.display = "none";
 
         //showNewsletterpopup simulation
         setTimeout(function () {
             console.log("setting class visible + add display:block");
-            popup[0].classList.add("visible");
-            popup[0].style.display = "block";
+            newsLetterPopup[0].classList.add("visible");
+            newsLetterPopup[0].style.display = "block";
         }, 3000);
         //end
 
         function showNewsletterpopup() {
-            if (popup.length > 0) {
+            // Apply setCookie
+            let blckbxCookie = 'blckbx cookie';
+            setCookie('blckbx.tv | blckbx.tv nieuwskanaal', blckbxCookie, 30);
+            if (newsLetterPopup.length > 0) {
                 console.log("popup visible");
+                cookiePopup[0].remove() ;
                 //popup[0].classList.add("anotherClassname");
                 setTimeout(function () {
-                    popup[0].parentElement.classList.remove("blcbxhide");
+                    newsLetterPopup[0].parentElement.classList.remove("blcbxhide");
                     //popup[0].parentElement.remove();
                 }, 5000);
             } else {
@@ -47,6 +54,16 @@
             //check for classname attribute
             attributes: true
         });
+
+        
+        // Set a Cookie
+        function setCookie(cName, cValue, expDays) {
+                let date = new Date();
+                date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+                const expires = "expires=" + date.toUTCString();
+                document.cookie = cName + "=" + cValue + "; " + expires + "; path=/" + "SameSite=None; Secure";
+        }
+        
 
     });
 
