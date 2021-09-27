@@ -65,3 +65,4 @@ CVS
 *.mode2v3
 *.perspectivev3
 xcuserdata/
+package-lock.json

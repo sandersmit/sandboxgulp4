@@ -84,6 +84,15 @@
             } else {
                 console.log("popup not visible");
             }
+            // if ( document.querySelectorAll(".testing").length > 0) {
+            //     console.log("popuptest visible");
+               
+            //     } else {
+            //     console.log("popuptest not visible");
+               
+            //     }
+
+           
         }
 
 
