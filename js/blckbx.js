@@ -1,7 +1,8 @@
 (function () {
     window.addEventListener("load", function () {
         console.log("blckbx loaded");
-       
+         //check for concent cookie
+         readCookie('blckbxNaam');
         var newsLetterPopup = document.querySelectorAll(".sqs-popup-overlay");
         var cookieCloseBtn = document.querySelectorAll(".sqs-popup-overlay-close");
         var cookieBtn = document.querySelectorAll(".sqs-cookie-banner-v2-cta");
@@ -19,10 +20,59 @@
         }, 3000);
         //end
 
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires="+d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/; SameSite=None; Secure";
+          }
+        
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i < ca.length;i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) 
+                {
+                //fire payload
+                var checkThis = c.substring(nameEQ.length,c.length)
+                console.log("cookie found - drop payload");
+                blckbxPyload(checkThis);
+                return c.substring(nameEQ.length,c.length);
+                }else{
+                console.log("no match - do nothing")
+                return;
+                }
+            }
+            return null;
+        }
+        
+        function blckbxPyload(checkThis){
+            if (checkThis.length > 0) {
+                console.log("ja");  
+                let newScript1 = document.createElement("script");
+                newScript1.setAttribute('async','async');
+                newScript1.setAttribute("type","text/javascript");
+                let newScript2 = document.createElement("script");
+                newScript2.setAttribute("type","text/javascript");
+                newScript1.src = "https://platform-api.sharethis.com/js/sharethis.js#property=6092ba5f18d187001189ef92&product=inline-share-buttons";
+                newScript2.src = "js/blckbxTradetracker.js";
+                document.body.lastElementChild.insertAdjacentElement('afterend', newScript1);
+                document.body.lastElementChild.insertAdjacentElement('afterend', newScript2);
+                console.log("blckbxPyload released")
+            } else {
+                console.log("nee"); 
+            }
+            
+        }
+
         function showNewsletterpopup() {
-            // Apply setCookie
-            let blckbxCookie = 'blckbx cookie';
-            setCookie('blckbx.tv | blckbx.tv nieuwskanaal', blckbxCookie, 30);
+            
+            let blckbxCookieValue = 'blckbxWaarde';
+            let blckbxCookieName = 'blckbxNaam';
+            // Apply setCookie function
+            setCookie(blckbxCookieName, blckbxCookieValue, 30);
             if (newsLetterPopup.length > 0) {
                 console.log("popup visible");
                 cookiePopup[0].remove() ;
@@ -35,6 +85,7 @@
                 console.log("popup not visible");
             }
         }
+
 
 
         // identify an element to observe
@@ -55,14 +106,7 @@
             attributes: true
         });
 
-        
-        // Set a Cookie
-        function setCookie(cName, cValue, expDays) {
-                let date = new Date();
-                date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
-                const expires = "expires=" + date.toUTCString();
-                document.cookie = cName + "=" + cValue + "; " + expires + "; path=/" + "SameSite=None; Secure";
-        }
+
         
 
     });
